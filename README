@@ -1,0 +1,41 @@
+PPTP brute forcer (1723/tcp)
+============================
+
+It currently only supports Microsoft Window ChapV2 authentication. This
+method is used by almost all devices on the internet (including cisco).
+ChapV1 support might be added later.
+
+Microsoft implements some brute force protection by limiting the number
+of possible caller_id's to 1 per second. This tool exploits some 
+implementation mistake by reusing the same caller_id for multiple
+authentication tries.
+
+Performance:
+============
+- I got 350 passwords / second on my local network and I'm running
+  at 5 - 50 passwords / second on remote networks (depending on the
+  latency).
+
+
+Usage:
+======
+
+cat wordlist | ./pptp_bruter [IP]
+
+Requirements:
+=============
+
+- TCP port 1723 must be open (for requestion caller id's)
+- Host must be reachable by protocol 47 (GRE)
+
+Dictionaries:
+=============
+Get your dictionaries from:
+
+- ftp.ox.ac.uk
+- out of crack5
+- john the ripper
+
+2003/06/04
+THC / segfault consortium.
+
